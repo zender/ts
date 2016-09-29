@@ -1,0 +1,34 @@
+<tb-project-row></tb-project-row>
+
+<tb-input-debounce delay="500" placeholder="Search..." (onChange)="filterUserPermissions($event)"></tb-input-debounce>
+
+<tb-select-form [options]="orderByOptions" (onSelect)="onOrderChange($event)"></tb-select-form>
+
+<ul *ngIf="!loading && userPermissions.length > 0">
+    <li *ngFor="let userPermission of userPermissions">
+
+        <span *ngIf="userPermission.isOwner()">owner</span>
+        <span *ngIf="!userPermission.isOwner()">user</span>
+
+        <img width="80px" [src]="userPermission.user.avatar" />
+        {{ userPermission.user.username }}
+        {{ userPermission.user.firstname }}
+        {{ userPermission.user.lastname }}
+        {{ userPermission.user.email }}
+
+        <a *ngIf="userPermission.isOwner()"  (click)="disableOwnerRights(userPermission)">
+            {{ 'button.disableOwnerRights' }}
+        </a>
+
+        <a *ngIf="!userPermission.isOwner()"  (click)="enableOwnerRights(userPermission)">
+            {{ 'button.enabledOwnerRights' }}
+        </a>
+        <br/>
+        <a  (click)="removePermission(userPermission)">{{ 'button.remove' }}</a>
+    </li>
+</ul>
+
+<div *ngIf="loading">Loading ...</div>
+
+
+

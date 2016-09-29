@@ -1,0 +1,16 @@
+<div *ngIf="loading">Loading ...</div>
+
+<div *ngIf="!loading">
+    <div class="tb-list">
+        <div class="tb-list-item notification-item"
+            *ngFor="let notification of notifications"
+            tooltipPlacement="right"
+            [tooltip]="notification.content">
+            <a href="javascript:;" >
+                <small>{{ notification.createdAt|date:'medium' }}</small>
+                <p>{{ notification.title }}</p>
+            </a>
+        </div>
+    </div>
+    <a *ngIf="nextPage" (click)='loadNotifications(nextPage)'>load more</a>
+</div>

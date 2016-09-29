@@ -1,0 +1,35 @@
+@import 'main';
+
+:host {
+  .tb-list {
+    .tb-list-item.notification-item {
+      padding-left: 0;
+      a {
+        padding-left: 8px;
+        border-left: 6px solid $primary-green;
+        display: block;
+        &:hover {
+          text-decoration: none;
+        }
+        small{
+          color: $gray;
+          font-size: 10px;
+          text-transform: uppercase;
+          display: block;
+        }
+        p{
+          color: $text-main;
+          display: inline-block;
+          margin: 0;
+          border-bottom: 3px solid transparent;
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        p {
+          border-bottom: 3px solid $base-primary;
+        }
+      }
+    }
+  }
+}

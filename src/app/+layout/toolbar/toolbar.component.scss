@@ -1,0 +1,44 @@
+@import 'main';
+
+:host {
+  background-color: $brand-primary;
+  display: block;
+  height: 64px;
+  padding: 0 16px;
+}
+
+// This should be a component tb-nav-list
+// TODO: @Octavian please turn me into a component
+$border-color: $base-gray;
+ul {
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    cursor: pointer;
+    color: $base-secondary;
+    // padding: $padding-base-vertical $padding-base-horizontal;
+    padding: 22px $padding-base-horizontal;
+    border-right: 1px solid $border-color;
+    &:first-child{
+      border-left: 1px solid $border-color;
+    }
+    &:hover{
+      color: white;
+      // background-color: $brand-secondary;
+    }
+    a {
+      color: inherit;
+      text-transform: uppercase;
+      vertical-align: middle;
+
+      &:hover {
+        text-decoration: none;
+        border: none;
+      }
+    }
+  }
+}

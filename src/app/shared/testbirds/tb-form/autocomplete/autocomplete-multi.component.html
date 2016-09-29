@@ -1,0 +1,38 @@
+<div class="form-group" [class.has-error]="!ngFormControl.valid && ngFormControl.touched">
+    <input
+        #queryInput
+        (keyup)="onQueryChange(queryInput.value)"
+        (focus)="onFocused()"
+        (blur)="onBlurred()"
+        placeholder="{{ placeholder }}"
+        class="form-control"
+        value="{{ query }}"
+    />
+
+    <span class="highlight"></span><span class="bar"></span>
+
+    <ul *ngIf="ngFormControl.errors && ngFormControl.errors.serverErrors">
+        <li *ngFor="let error of ngFormControl.errors.serverErrors">{{ error.message }}</li>
+    </ul>
+
+    <ul *ngIf="!loading && !suggestionsHidden" (mouseleave)="onSuggestionsMouseLeave()">
+        <li *ngFor="let option of options">
+           {{ option.label }}
+            <a *ngIf="!isSelected(option)" href="#" (click)="selectOption(option)">{{ 'autocomplete.select_option' }}</a>
+        </li>
+    </ul>
+
+    <div *ngIf="loading">Loading ...</div>
+
+    <div *ngIf="!loading && noResult">{{ noResultMessage }}</div>
+
+    <ul *ngIf="showSelectedOptions">
+        <li *ngFor="let selectedOption of selectedOptions">
+            {{ selectedOption.label }}
+            <a (click)="removeOption(selectedOption)" >
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+        </li>
+    </ul>
+
+</div>

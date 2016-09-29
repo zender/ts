@@ -1,0 +1,38 @@
+<div class="tb-project" *ngIf="project">
+
+  <tb-project-logo [logo]="project.logo" [filter]="'smallThumb'"></tb-project-logo>
+
+  <div class="main-info">
+    <h2>{{ project.title }}</h2>
+    <ul class="control-list small">
+      <li>
+        <a [routerLink]="['/projects/:mode', {projectId: project.id, mode: 'edit'}]"
+        tooltipPlacement="top"
+        tooltip="Edit Project">
+          <tb-icon type="edit"></tb-icon>
+        </a>
+      </li>
+      <li>
+        <span
+        (click)="toggleEnable()"
+        [(ngModel)]="project.enabled"  btnCheckbox
+        tooltipPlacement="top"
+        [tooltip]="project.enabled ? 'Disabled': 'Enabled'">
+          <tb-icon
+            type="trash"
+            [class.enabled]="project.enabled"
+          ></tb-icon>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="actions">
+    <tb-project-actions [project]="project"></tb-project-actions>
+  </div>
+
+  <div class="language-stats">
+    <tb-language-stat *ngFor="let languageStat of project.stats.languageStats" [languageStat]="languageStat"></tb-language-stat>
+  </div>
+
+</div>

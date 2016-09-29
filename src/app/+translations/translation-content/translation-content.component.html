@@ -1,0 +1,7 @@
+<tb-textarea-form
+    [(ngModel)]="translation.content"
+    (keyup)="isBtnEnabled=true"
+>
+</tb-textarea-form>
+
+<button [disabled]="!isBtnEnabled" class="btn btn-default" (click)="update()">Update {{ translation.language }}</button>

@@ -1,0 +1,13 @@
+{
+  "app.title": "Translations",
+  "login.title": "Please enter your credentials",
+  "login.error": "Invalid credentials",
+  "user.username": "Username",
+  "user.password": "Password",
+  "validator.user.username.required": "Username is required",
+  "validator.user.password.required": "Password is required",
+  "button.login": "Login",
+  "button.logout": "Log out",
+  "dashboard.title": "Dashboard",
+  "user.greetings": "Hello {{firstname}} {{lastname}}"
+}

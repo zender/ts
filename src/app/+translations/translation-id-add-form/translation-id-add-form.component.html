@@ -1,0 +1,33 @@
+<form [formGroup]="form" (submit)="onSubmit()" class="form">
+
+    <tb-text-form
+        [placeholder]="'Enter name'"
+        [ngFormControl]="form.controls['name']"
+        (keyup)="normalizeIdentifier()"
+        [(ngModel)]="model.name"
+        formControlName="name"
+
+    ></tb-text-form>
+
+    <tb-text-form
+        [placeholder]="'Enter bundle'"
+        [ngFormControl]="form.controls['bundle']"
+        [(ngModel)]="model.bundle"
+        formControlName="bundle"
+
+    ></tb-text-form>
+
+    <tb-autocomplete
+        [service]="translationDomainService"
+        [placeholder]="'Select domain'"
+        [initialOption]="model.translationDomain"
+        [ngFormControl]="form.controls['translationDomain']"
+        [(ngModel)]="model.translationDomain"
+        formControlName="translationDomain"
+    >
+    </tb-autocomplete>
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid || submitting">{{ 'button.add' }}</button>
+    </div>
+</form>

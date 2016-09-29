@@ -1,0 +1,121 @@
+<form *ngIf="!loading" [formGroup]="projectForm" (submit)="onSubmit()" class="form">
+
+    <tb-image-upload-form
+        formControlName="logo"
+        [(ngModel)]="projectFormModel.logo"
+        [ngFormControl]="projectForm.controls.logo"
+        [url]="imageUploadUrl"
+        [authToken]="authService.getToken()"
+        [filter]="'mediumThumb'"
+        [initialValue]="projectFormModel.logo"
+    ></tb-image-upload-form>
+
+    <tb-text-form
+        [placeholder]="'Enter title'"
+        formControlName="title"
+        [(ngModel)]="projectFormModel.title"
+        [ngFormControl]="projectForm.controls.title"
+    ></tb-text-form>
+
+    <tb-select-form *ngIf="isCreateMode()"
+        [options]="projectsToInherit"
+        [ngFormControl]="projectForm.controls['inheritedProject']"
+        [placeholder]="'Select project'"
+        [(ngModel)]="projectFormModel.inheritedProject"
+        formControlName="title"
+    ></tb-select-form>
+
+    <tb-autocomplete-multi
+        [service]="adapterService"
+        [initialOptions]="projectFormModel.adapters"
+        [ngFormControl]="projectForm.controls['adapters']"
+        [placeholder]="'Select adapter'"
+        [noResultMessage]="'No adapters found'"
+        [triggerLoadOnFocus]="true"
+        [(ngModel)]="projectFormModel.adapters"
+        formControlName="adapters"
+    ></tb-autocomplete-multi>
+
+    <tb-language-form
+        [autocompleteWidget]="autocompleteWidget"
+        [ngFormControl]="projectForm.controls['defaultLanguage']"
+        [(ngModel)]="projectFormModel.defaultLanguage"
+        [isCreateMode]="isCreateMode()"
+        formControlName="defaultLanguage"
+    ></tb-language-form>
+
+    <hr/>
+
+    <tb-translation-domain-form
+        [autocompleteWidget]="translationDomainAutocompleteWidget"
+    ></tb-translation-domain-form>
+
+    <tb-user-form
+        #userForm
+        [autocompleteWidget]="userAutocompleteWidget"
+        [ngFormControl]="projectForm.controls.userPermissions"
+        [(ngModel)]="projectFormModel.userPermissions"
+        formControlName="userPermissions"
+    ></tb-user-form>
+
+    <tabset>
+        <tab>
+            <template tabHeading>
+                <i class="glyphicon glyphicon-pencil"></i> Languages
+            </template>
+
+            <tb-language-autocomplete
+                #autocompleteWidget
+                [initialOptions]="projectFormModel.languages"
+                [placeholder]="'Select language'"
+                [noResultMessage]="'No languages found'"
+                [triggerLoadOnFocus]="true"
+                [showSelectedOptions]="false"
+                [ngFormControl]="projectForm.controls.languages"
+                [(ngModel)]="projectFormModel.languages"
+                formControlName="languages"
+            ></tb-language-autocomplete>
+
+        </tab>
+
+        <tab>
+            <template tabHeading>
+                <i class="glyphicon glyphicon-pencil"></i> Translation Domains
+            </template>
+
+            <tb-translation-domain-autocomplete #translationDomainAutocompleteWidget
+                [initialOptions]="projectFormModel.translationDomains"
+                [placeholder]="'Add domain'"
+                [noResultMessage]="'No domains found'"
+                [triggerLoadOnFocus]="false"
+                [showSelectedOptions]="true"
+                [allowAdd]="true"
+                [ngFormControl]="projectForm.controls['translationDomains']"
+                [(ngModel)]="projectFormModel.translationDomains"
+                formControlName="translationDomains"
+            ></tb-translation-domain-autocomplete>
+        </tab>
+
+        <tab>
+            <template tabHeading>
+                <i class="glyphicon glyphicon-pencil"></i> Users
+            </template>
+
+            <tb-user-autocomplete
+                #userAutocompleteWidget
+                [initialOptions]="projectFormModel.userPermissions"
+                [placeholder]="'Add user'"
+                [noResultMessage]="'No users found'"
+                [triggerLoadOnFocus]="false"
+                (onSelectOption)="userForm.addPermission($event)"
+            ></tb-user-autocomplete>
+        </tab>
+    </tabset>
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit" [disabled]="!projectForm.valid || submitting">{{ 'button.save' }}</button>
+        <a *ngIf="!isCreateMode()" class="btn btn-primary" [routerLink]="['/projects/:projectId/info', {'projectId': project.id}]" >{{ 'button.back' }}</a>
+        <a *ngIf="isCreateMode()" class="btn btn-primary" [routerLink]="['/dashboard']" >{{ 'button.back' }}</a>
+    </div>
+</form>
+

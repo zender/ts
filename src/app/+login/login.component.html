@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+        <h3 class="text-primary">{{ 'login.title'|translate }}</h3>
+
+        <form class="form" (submit)="onSubmit()" [formGroup]="loginForm">
+            <div class="form-group" [class.has-error]="!loginForm.controls.username.valid && loginForm.controls.username.touched">
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="{{ 'user.username'|translate }}"
+                    formControlName="username"
+                >
+                <span class="highlight"></span><span class="bar"></span>
+
+                <div *ngIf="!loginForm.controls.username.valid && loginForm.controls.username.touched"
+                    class="validation-message">
+                    {{ 'validator.user.username.required'|translate }}
+                    <i class="glyphicon glyphicon-alert regular pull-right"></i>
+                </div>
+            </div>
+            <div class="form-group" [class.has-error]="!loginForm.controls.password.valid && loginForm.controls.password.touched">
+                <input
+                    type="password"
+                    class="form-control"
+                    placeholder="{{ 'user.password'|translate }}"
+                    formControlName="password"
+                >
+                <span class="highlight"></span><span class="bar"></span>
+
+                <div *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.touched"
+                    class="validation-message">
+                    {{ 'validator.user.password.required'|translate }}
+                    <i class="glyphicon glyphicon-alert regular pull-right"></i>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">{{ 'button.login'|translate|uppercase }}</button>
+            </div>
+        </form>
+
+        <alert *ngIf="error" type="danger" dismissOnTimeout="5000">
+            {{ 'login.error'|translate }}
+        </alert>
+    </div>
+</div>

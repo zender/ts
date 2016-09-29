@@ -1,0 +1,221 @@
+// Fix for webpack font location
+$icon-font-path: '/assets/fonts/testbirds';
+
+@font-face {
+  font-family: 'testbirds';
+  src:    url('#{$icon-font-path}/testbirds.eot?nrv8xx');
+  src:    url('#{$icon-font-path}/testbirds.eot?nrv8xx#iefix') format('embedded-opentype'),
+  url('#{$icon-font-path}/testbirds.ttfónrv8xx') format('truetype'),
+  url('#{$icon-font-path}/testbirds.woff?nrv8xx') format('woff'),
+  url('#{$icon-font-path}/testbirds.svg?nrv8xx#testbirds') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+i.tb-icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'testbirds' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cart_cart:before {
+    content: "\2c";
+}
+.icon-translation-id:before {
+    content: "\6d";
+}
+.icon-upload:before {
+    content: "\6e";
+}
+.icon-edit:before {
+    content: "\62";
+}
+.icon-list-items:before {
+    content: "\76";
+}
+.icon-single-item:before {
+    content: "\63";
+}
+.icon-close:before {
+    content: "\78";
+}
+.icon-checkmark:before {
+    content: "\7a";
+}
+.icon-search:before {
+    content: "\60";
+}
+.icon-eye:before {
+    content: "\27";
+}
+.icon-actions:before {
+    content: "\3b";
+}
+.icon-add-project:before {
+    content: "\32";
+}
+.icon-add-language:before {
+    content: "\31";
+}
+.icon-add-user:before {
+    content: "\33";
+}
+.icon-FAQ:before {
+    content: "\34";
+}
+.icon-file:before {
+    content: "\35";
+}
+.icon-flag:before {
+    content: "\36";
+}
+.icon-info:before {
+    content: "\37";
+}
+.icon-projects:before {
+    content: "\38";
+}
+.icon-bird:before {
+    content: "\39";
+}
+.icon-joystick:before {
+    content: "\30";
+}
+.icon-laptop:before {
+    content: "\2d";
+}
+.icon-PC:before {
+    content: "\3d";
+}
+.icon-photocamera:before {
+    content: "\71";
+}
+.icon-trash:before {
+    content: "\77";
+}
+.icon-watch:before {
+    content: "\65";
+}
+.icon-acknowledgement:before {
+    content: "\72";
+}
+.icon-directinos:before {
+    content: "\74";
+}
+.icon-gear:before {
+    content: "\79";
+}
+.icon-heart:before {
+    content: "\75";
+}
+.icon-smartphone:before {
+    content: "\69";
+}
+.icon-tablet:before {
+    content: "\6f";
+}
+.icon-user:before {
+    content: "\70";
+}
+.icon-users:before {
+    content: "\5b";
+}
+.icon-blog:before {
+    content: "\5d";
+}
+.icon-bugs:before {
+    content: "\61";
+}
+.icon-cup:before {
+    content: "\73";
+}
+.icon-devices:before {
+    content: "\64";
+}
+.icon-help:before {
+    content: "\66";
+}
+.icon-invitations:before {
+    content: "\67";
+}
+.icon-payment:before {
+    content: "\68";
+}
+.icon-task:before {
+    content: "\6a";
+}
+.icon-tests:before {
+    content: "\6b";
+}
+.icon-dashboard:before {
+    content: "\6c";
+}
+
+@mixin button-color-variant($defaultBG, $defaultColor, $hoverBG, $hoverColor){
+  background-color: $defaultBG;
+  tb-icon {
+    i {
+      color: $defaultColor;
+    }
+  }
+  .label {
+    color: transparent;
+  }
+  &:hover {
+    background-color: $hoverBG;
+    tb-icon {
+      i {
+        color: $hoverColor;
+      }
+    }
+    .label {
+      color: $hoverColor;
+    }
+  }
+}
+
+@mixin button-size-variant($iconSize, $labelSize){
+  tb-icon {
+    i {
+      font-size: $iconSize;
+    }
+  }
+  .label {
+    font-size: $labelSize;
+  }
+}
+
+.tb-icon-button{
+  display: block;
+  text-align: center;
+  padding: $padding-small;
+
+  tb-icon {
+    display: block;
+  }
+
+  &.primary {
+    @include button-color-variant(white, $brand-secondary, $base-secondary, $brand-primary);
+    &.reverse{
+      @include button-color-variant($brand-primary, white, white, $brand-primary);
+    }
+  }
+  &.small {
+    @include button-size-variant(36px, 10px);
+  }
+  &.medium {
+    @include button-size-variant(50px, 12px);
+  }
+  &.large {
+    @include button-size-variant(72px, 14px);
+  }
+}

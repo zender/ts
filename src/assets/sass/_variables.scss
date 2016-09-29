@@ -1,0 +1,35 @@
+//
+// Base
+// --------------------------------------------------
+$padding-base-vertical: 12px;
+$padding-base-horizontal: 17px;
+$padding-tiny: 8px;
+$padding-small: 12px;
+$padding-medium: 16px;
+$padding-big: 20px;
+$padding-huge: 24px;
+//
+// Buttons
+// --------------------------------------------------
+$btn-border-radius-base: 0;
+$btn-font-weight: inherit;
+//
+// Forms
+// --------------------------------------------------
+$form-group-margin-bottom: 10px;
+$input-border-radius: 0;
+//
+// Labels
+// --------------------------------------------------
+$label-white-bg: white;
+$label-white-color: $gray-dark;
+//
+// Text Colors
+// --------------------------------------------------
+.text-highlight {
+  color: $brand-highlight;
+}
+.bg-highlight {
+  color: white;
+  background-color: $brand-highlight;
+}

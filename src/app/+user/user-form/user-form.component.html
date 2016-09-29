@@ -1,0 +1,19 @@
+Users:
+
+<ul *ngIf="userPermissions.length > 0">
+    <li *ngFor="let userPermission of userPermissions">
+
+        <span *ngIf="userPermission.isOwner()">owner</span>
+        <span *ngIf="!userPermission.isOwner()">user</span>
+
+        <img width="80px" [src]="userPermission.user.avatar" />
+        {{ userPermission.user.username }}
+        {{ userPermission.user.firstname }}
+        {{ userPermission.user.lastname }}
+        {{ userPermission.user.email }}
+
+        <a href="#" (click)="removePermission(userPermission)">{{ 'button.remove' }}</a>
+    </li>
+</ul>
+
+

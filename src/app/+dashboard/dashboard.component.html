@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h2 class="text-primary pull-left">{{ 'dashboard.title'|translate }}</h2>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-3" *ngIf="isAdmin">
+    <!-- Actions -->
+    <!-- IF ADMIN -->
+    <tb-panel-wrapper>
+      <tb-panel-header>
+        <tb-icon type="actions"></tb-icon>
+        <p>Actions</p>
+      </tb-panel-header>
+      <!--As a list-group we do not need to wrap it inside a panel-body
+      otherwise the passing will be doubled-->
+      <div class="tb-mosaic">
+        <div class="tb-mosaic-item action-item">
+          <a [routerLink]="['/projects/:mode', {mode: 'create'}]" >
+            <tb-icon-button icon="add-project" label="ADD PROJECT" class="primary large"></tb-icon-button>
+          </a>
+        </div>
+        <div class="tb-mosaic-item action-item">
+          <a [routerLink]="['/languages/:mode', {mode: 'create'}]" >
+            <tb-icon-button icon="add-language" label="ADD LANGUAGE" class="primary large"></tb-icon-button>
+          </a>
+        </div>
+      </div>
+      <!--<tb-panel-body></tb-panel-body>-->
+    </tb-panel-wrapper>
+    <!-- Languages -->
+    <tb-panel-wrapper>
+      <tb-panel-header>
+        <tb-icon type="flag"></tb-icon>
+        <p>Existing Languages</p>
+      </tb-panel-header>
+      <!--As a list-group we do not need to wrap it inside a panel-body
+      otherwise the passing will be doubled-->
+      <div class="tb-list">
+        <div class="tb-list-item language-item" *ngFor="let language of languages">
+          <img src="{{ language.flag }}">
+          <p>{{ language.name }}</p>
+        </div>
+      </div>
+      <!--<tb-panel-body></tb-panel-body>-->
+    </tb-panel-wrapper>
+    <!-- Adapters -->
+    <tb-panel-wrapper>
+      <tb-panel-header class="iconless">
+        <!-- <tb-icon type="flag"></tb-icon> -->
+        <p>Available adapters</p>
+      </tb-panel-header>
+      <!--As a list-group we do not need to wrap it inside a panel-body
+      otherwise the passing will be doubled-->
+      <div class="tb-list">
+        <div class="tb-list-item adapter-item" *ngFor="let adapter of adapters">
+          {{ adapter.name }}
+        </div>
+      </div>
+      <!--<tb-panel-body></tb-panel-body>-->
+    </tb-panel-wrapper>
+    <!--Notifications -->
+    <tb-panel-wrapper>
+      <tb-panel-header>
+        <tb-icon type="info"></tb-icon>
+        <p>Notifications</p>
+      </tb-panel-header>
+      <!--As a list-group we do not need to wrap it inside a panel-body
+      otherwise the passing will be doubled-->
+      <tb-notification-list></tb-notification-list>
+      <!--<tb-panel-body></tb-panel-body>-->
+    </tb-panel-wrapper>
+  </div>
+  <div [class]="rowClass">
+    <tb-panel-wrapper>
+      <tb-panel-header>
+        <tb-icon type="projects"></tb-icon>
+        <p>Projects</p>
+      </tb-panel-header>
+      <!--As a list-group we do not need to wrap it inside a panel-body
+      otherwise the passing will be doubled-->
+      <tb-project-list (projectsLoaded)="onProjectsLoaded($event)"></tb-project-list>
+      <!--<tb-panel-body></tb-panel-body>-->
+    </tb-panel-wrapper>
+  </div>
+</div>

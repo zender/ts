@@ -1,0 +1,48 @@
+@import 'main';
+
+:host {
+  display: block;
+
+  .tb-panel {
+    .tb-panel-head {
+      border-bottom: 3px solid;
+      text-transform: uppercase;
+      font-weight: bold;
+      width: 100%;
+      padding: 0;
+      * {
+        vertical-align: bottom;
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        font-size: 13px;
+      }
+      p {
+        padding: $padding-small 0;
+      }
+      tb-icon {
+        // margin-right: 8px;
+        // There is already a margin in the font
+        i {
+          font-size: 42px;
+        }
+      }
+    }
+    .iconless {
+      p {
+        padding: $padding-small;
+      }
+    }
+    .tb-panel-body {
+
+    }
+
+    &.tb-panel-default {
+      .tb-panel-head {
+        background-color: $gray-lighter;
+        color: $font-color-base;
+        border-bottom-color: $gray-light;
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+<tb-project-row></tb-project-row>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{ 'translation_id.title' }}</h3>
+    </div>
+
+    <tb-input-debounce [placeholder]="'Search...'" (onChange)="search($event)"></tb-input-debounce>
+
+    <div *ngIf="!loading" class="panel-body">
+
+        <tb-translation-id-add-form
+            [projectId]="projectId"
+            (onCreated)="translationIdentifiers.unshift($event)"
+        >
+
+        </tb-translation-id-add-form>
+
+        <table class="table table-hover">
+            <tbody>
+            <tr *ngFor="let translationIdentifier of translationIdentifiers;"
+                (click)="selectRow(translationIdentifier)"
+                [ngClass]="{'info': isRowSelected(translationIdentifier)}" >
+
+                <td>{{ translationIdentifier.name }}</td>
+                <td>
+                    <button *ngIf="isRowSelected(translationIdentifier)" class="btn btn-default" (click)="toogleTabset()">
+                        {{ translationIdentifier.translationDomain }}
+                    </button>
+
+                    <tabset *ngIf="isRowSelected(translationIdentifier) && isTabsetVisible">
+                        <tab>
+                            <template tabHeading>
+                                Domain
+                            </template>
+
+                            <tb-autocomplete
+                                [service]="translationDomainService"
+                                [initialOption]="translationIdentifier.translationDomain"
+                                [placeholder]="'Select domain'"
+                                [(ngModel)]="translationIdentifier.translationDomain"
+                            >
+
+                            </tb-autocomplete>
+                        </tab>
+                        <tab>
+                            <template tabHeading>
+                                Add Domain
+                            </template>
+                            <tb-translation-domain-add-form
+                                [projectId]="projectId"
+                                (onSaved)="translationIdentifier.setTranslationDomain($event)"
+                            >
+
+                            </tb-translation-domain-add-form>
+                        </tab>
+                    </tabset>
+
+                    <span *ngIf="!isRowSelected(translationIdentifier)" class="label label-info">
+                        {{ translationIdentifier.translationDomain }}
+                    </span>
+                </td>
+                <td><div *ngIf="isRowSelected(translationIdentifier)">
+                    <button [disabled]="!translationIdentifier.translationDomain" class="btn btn-primary" (click)="updateRow(translationIdentifier)">{{ 'button.update' }}</button>
+                    <button class="btn btn-default" (click)="removeRow(translationIdentifier)">{{ 'button.remove' }}</button>
+                </div></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="totalItems > 0">
+            <pagination
+                [totalItems]="totalItems"
+                [itemsPerPage]="itemsPerPage"
+                [(ngModel)]="currentPage"
+                (pageChanged)="pageChanged($event)">
+            </pagination>
+        </div>
+    </div>
+</div>

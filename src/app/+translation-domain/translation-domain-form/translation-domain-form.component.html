@@ -1,0 +1,12 @@
+Translation domains:
+
+<ul>
+    <li *ngFor="let option of options">
+        <span class="label label-primary">{{ option.id }}</span>
+        <a (click)="removeOption(option)" >
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </li>
+</ul>
+
+

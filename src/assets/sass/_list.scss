@@ -1,0 +1,27 @@
+.tb-list {
+  border: 1px solid $gray-light;
+  .tb-list-item {
+    background-color: white;
+    padding: $padding-tiny;
+    border-bottom: 1px solid $gray-light;
+    &:first-child {
+
+    }
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+.tb-mosaic {
+  border: 1px solid $gray-light;
+  border-left: 0;
+  display: table;
+  width: 100%;
+  .tb-mosaic-item {
+    background-color: white;
+    display: table-cell;
+    border-left: 1px solid $gray-light;
+    width: 50%;
+  }
+}

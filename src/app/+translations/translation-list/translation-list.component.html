@@ -1,0 +1,45 @@
+<div>
+
+    <button class="btn btn-default" [ngClass]="{'active': !showList}" [value]="false" (click)="setShowList(false)">Single</button>
+    <button class="btn btn-default" [ngClass]="{'active': showList}" (click)="setShowList(true)">List</button>
+
+    <tb-input-debounce [placeholder]="'Search...'" (onChange)="onQuery($event)"></tb-input-debounce>
+
+    <tb-dropdown
+        [label]="'Translation states'"
+        [options]="translationStates"
+        [selectedOption]="translationStates[0]"
+        (onSelect)="onTranslationStateChange($event)"
+    >
+    </tb-dropdown>
+
+    <language-dropdown
+        [label]="'Languages'"
+        [options]="languageOptions"
+        [selectedOption]="languageOptions[0]"
+        (onSelect)="onLanguageChange($event)"
+    >
+    </language-dropdown>
+</div>
+
+
+<div *ngIf="!loading">
+    <div *ngFor="let translation of translations">
+        <tb-translation-row
+            [translationIdentifier]="translation"
+            [projectId]="projectId"
+            [languages]="languages"
+            [languageCodes]="selectedLanguageCodes"
+        ></tb-translation-row>
+        <hr>
+    </div>
+</div>
+
+<div *ngIf="nextPage && showList">
+    <button [disabled]="loading" class="btn btn-default" (click)="loadTranslationIdentifiers(nextPage)">Show more</button>
+</div>
+
+<div *ngIf="!showList">
+    <button [disabled]="!previousPage || loading" class="btn btn-default"  (click)="loadTranslationIdentifiers(previousPage, true)">Previous</button>
+    <button [disabled]="!nextPage || loading" class="btn btn-default"  (click)="loadTranslationIdentifiers(nextPage, true)">Next</button>
+</div>

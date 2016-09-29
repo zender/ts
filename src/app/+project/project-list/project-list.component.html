@@ -1,0 +1,15 @@
+<div *ngIf="totalItems > 0">
+  <tb-project-search [placeholder]="'Search projects ...'"></tb-project-search>
+
+  <div *ngFor="let project of projects;">
+    <tb-project-row [project]=project></tb-project-row>
+  </div>
+
+  <pagination *ngIf="allPages > 1" [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+</div>
+
+<div *ngIf="totalItems === 0">
+  <a class="btn btn-default" [routerLink]="['ProjectForm', {mode: 'create'}]" >
+    {{ "button.project_create" }}
+  </a>
+</div>

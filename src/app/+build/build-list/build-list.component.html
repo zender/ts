@@ -1,0 +1,12 @@
+<tb-project-row></tb-project-row>
+
+<tb-build-form [projectId]="projectId" (onCreate)="loadBuildsAndClearSearch()"></tb-build-form>
+
+<tb-input-debounce #search [placeholder]="'Search...'" (onChange)="onQuery($event)"></tb-input-debounce>
+
+<div *ngIf="!loading">
+    <div *ngFor="let build of builds">
+        <tb-build-row [projectId]="projectId" [build]="build" (onRemove)="loadBuilds(currentPage, true); query=''"></tb-build-row>
+        <hr>
+    </div>
+</div>

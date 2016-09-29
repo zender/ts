@@ -1,0 +1,28 @@
+<div>
+    <div>
+        ID: {{ translationIdentifier.name }}
+        Details: {{ translationIdentifier.description }}
+        <tb-image-upload-form
+                [(ngModel)]="translationIdentifier.screenshot"
+                [url]="imageUploadUrl"
+                [preview]="false"
+                [authToken]="authService.getToken()"
+        ></tb-image-upload-form>
+
+    </div>
+
+    <tabset>
+        <tab *ngFor="let translation of translationIdentifier.getFilteredTranslations(languageCodes)">
+            <template tabHeading>
+                {{ getLanguage(translation.language).name }}
+                Translated: {{ translation.isTranslated }}
+            </template>
+
+            <tb-translation-content
+                [translation]="translation"
+                [projectId]="projectId"
+                [translationIdentifierId]="translationIdentifier.id"
+            ></tb-translation-content>
+        </tab>
+    </tabset>
+</div>

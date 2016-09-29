@@ -1,0 +1,32 @@
+<div class="form-group">
+    <input
+        #queryInput
+        (keydown)="onQueryChange(queryInput.value)"
+        (focus)="onFocused()"
+        (blur)="onBlurred()"
+        placeholder="{{ placeholder }}"
+        class="form-control"
+        value="{{ query }}"
+    />
+
+    <span class="highlight"></span><span class="bar"></span>
+
+    <ul *ngIf="!loading && !suggestionsHidden" (mouseleave)="onSuggestionsMouseLeave()">
+        <li *ngFor="let option of options">
+            <img width="80px" [src]="option.extraData.user.avatar" />
+            {{ option.extraData.user.username }}
+            {{ option.extraData.user.firstname }}
+            {{ option.extraData.user.lastname }}
+            {{ option.extraData.user.email }}
+
+            <a *ngIf="!isSelected(option)" href="#" (click)="addOwner(option)">{{ 'button.add_owner' }}</a>
+            <a *ngIf="!isSelected(option)" href="#" (click)="addUser(option)">{{ 'button.add_user' }}</a>
+            <a *ngIf="isSelected(option)" href="#" (click)="removeOption(option)">{{ 'button.remove' }}</a>
+        </li>
+    </ul>
+
+    <div *ngIf="loading">Loading ...</div>
+
+    <div *ngIf="!loading && noResult">{{ noResultMessage }}</div>
+
+</div>

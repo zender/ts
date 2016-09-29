@@ -1,0 +1,18 @@
+@import 'main';
+
+:host {
+  display: block;
+  padding: 0 16px;
+}
+
+h3{}
+
+input {
+  width: 250px;
+  color: aliceblue;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 0 0 8px;
+}

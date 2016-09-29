@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let route of routes">
+    <a [routerLinkActive]="['active']" [routerLink]="route.instructions" >
+      <tb-icon-button
+        [icon]="route.icon"
+        [label]="route.label"
+        class="primary medium"
+      ></tb-icon-button>
+    </a>
+  </li>
+</ul>

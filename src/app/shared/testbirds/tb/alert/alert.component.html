@@ -1,0 +1,8 @@
+<div *ngFor="let alert of alerts">
+    <alert dismissOnTimeout="5000"
+           dismissible="alert.dismissible"
+           [type]="alert.getViewType()"
+           (close)="removeAlert(alert)">
+        {{ alert.message }}
+    </alert>
+</div>

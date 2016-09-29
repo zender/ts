@@ -1,0 +1,61 @@
+@import 'main';
+
+@mixin button-color-variant($defaultBG, $defaultColor, $hoverBG, $hoverColor){
+  background-color: $defaultBG;
+  tb-icon {
+    i {
+      color: $defaultColor;
+    }
+  }
+  .label {
+    color: transparent;
+  }
+  &:hover {
+    background-color: $hoverBG;
+    tb-icon {
+      i {
+        color: $hoverColor;
+      }
+    }
+    .label {
+      color: $hoverColor;
+    }
+  }
+}
+
+@mixin button-size-variant($iconSize, $labelSize){
+  tb-icon {
+    i {
+      font-size: $iconSize;
+    }
+  }
+  .label {
+    font-size: $labelSize;
+  }
+}
+
+:host{
+  display: block;
+  text-align: center;
+  padding: $padding-small;
+
+  tb-icon {
+    display: block;
+  }
+
+  &.primary {
+    @include button-color-variant(white, $brand-secondary, $base-secondary, $brand-primary);
+    &.reverse{
+      @include button-color-variant($brand-primary, white, white, $brand-primary);
+    }
+  }
+  &.small {
+    @include button-size-variant(36px, 10px);
+  }
+  &.medium {
+    @include button-size-variant(50px, 12px);
+  }
+  &.large {
+    @include button-size-variant(72px, 14px);
+  }
+}

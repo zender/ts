@@ -1,0 +1,30 @@
+Languages:
+
+<div class="btn-group" *ngIf="isCreateMode">
+    <label *ngFor="let option of options" class="btn btn-primary"
+           [(ngModel)]="defaultLanguage"
+           btnRadio="{{ option.id }}"
+           (click)="onTouched()">
+        <img [src]="option.extraData.language.flag"> {{ option.label }}
+        <a (click)="removeOption(option)" >
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </label>
+</div>
+
+<div class="btn-group" *ngIf="!isCreateMode">
+    <label *ngFor="let option of options">
+        <img [src]="option.extraData.language.flag"> {{ option.label }}
+        <a *ngIf="!isDefautLanguage(option)" (click)="removeOption(option)" >
+            <span class="glyphicon glyphicon-remove"></span>
+        </a>
+    </label>
+</div>
+
+<div *ngIf="!defaultLanguage && options.length > 0"
+     class="validation-message">
+    {{ 'validator.project.defaultLanguage.required' }}
+    <i class="glyphicon glyphicon-alert regular pull-right"></i>
+</div>
+
+

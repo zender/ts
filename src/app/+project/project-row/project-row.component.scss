@@ -1,0 +1,85 @@
+@import "main";
+
+:host {
+  display: block;
+  margin-top: 12px;
+  background-color: white;
+  border-bottom: 3px solid $gray-light;
+  border-right: 3px solid $gray-light;
+
+  .tb-project {
+    // Logo or placeholder
+    .logo {
+      vertical-align: top;
+      display: inline-block;
+      width: 170px;
+      height: 110px;
+      background-color: $base-secondary;
+      text-align: center;
+
+      i {
+        display: block;
+        margin: auto;
+        width: 72px;
+        height: 72px;
+        font-size: 72px;
+        margin-top: 19px;
+      }
+    }
+    // Title and small actions
+    .main-info {
+      vertical-align: top;
+      display: inline-block;
+      padding-left: 20px;
+      h2 {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      ul.control-list {
+        padding: 0;
+        list-style: none;
+        li {
+          display: inline-block;
+          padding: 0;
+          margin: 0;
+          a,span,button {
+            display: block;
+            padding: 0;
+            margin: 0;
+            color: $gray-light;
+            text-decoration: none;
+            i {
+              font-size: 24px;
+              color: inherit;
+            }
+            &:hover {
+              color: $text-main;
+            }
+          }
+        }
+      }
+    }
+    // Big actions right aligned
+    .actions {
+      vertical-align: top;
+      display: inline-block;
+      float: right;
+      padding: 0;
+      margin: 0;
+    }
+
+    .language-stats {
+      padding: $padding-big;
+      @include opacity(50%);
+      img {
+        width: 40px;
+        height: 20px;
+        margin-right: $padding-tiny;
+      }
+      &:hover {
+        @include opacity(1);
+      }
+    }
+  }
+
+}

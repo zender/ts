@@ -1,0 +1,9 @@
+<div class="tb-panel" [ngClass]="panelType">
+  <div class="tb-panel-head" *ngIf="header">
+    <div class="icon"></div>
+    {{ title }}
+  </div>
+  <div class="tb-panel-body">
+    <ng-content></ng-content>
+  </div>
+</div>

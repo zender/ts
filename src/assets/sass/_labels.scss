@@ -1,0 +1,21 @@
+// 
+@mixin tb-label-variant($bg-color, $color) {
+  background-color: $bg-color;
+  color: $color;
+
+  &[href] {
+    &:hover,
+    &:focus {
+      background-color: darken($bg-color, 10%);
+    }
+  }
+}
+
+.label {
+    border-radius: 0;    
+}
+
+// New variant for white label
+.label-white {
+  @include tb-label-variant($label-white-bg, $label-white-color);
+}

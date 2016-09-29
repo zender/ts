@@ -1,0 +1,19 @@
+@import 'main';
+
+:host {
+  display: block;
+  ul {
+    list-style: none;
+    li {
+      display: inline-block;
+      a {
+        display: block;
+        padding: 0;
+        margin: 0;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
