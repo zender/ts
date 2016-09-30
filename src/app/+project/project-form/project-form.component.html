@@ -114,7 +114,7 @@
 
     <div class="form-group">
         <button class="btn btn-primary" type="submit" [disabled]="!projectForm.valid || submitting">{{ 'button.save' }}</button>
-        <a *ngIf="!isCreateMode()" class="btn btn-primary" [routerLink]="['/projects/:projectId/info', {'projectId': project.id}]" >{{ 'button.back' }}</a>
+        <a *ngIf="!isCreateMode()" class="btn btn-primary" [routerLink]="['/project-info', project.id]" >{{ 'button.back' }}</a>
         <a *ngIf="isCreateMode()" class="btn btn-primary" [routerLink]="['/dashboard']" >{{ 'button.back' }}</a>
     </div>
 </form>

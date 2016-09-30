@@ -1,6 +1,6 @@
 import {
   Component, forwardRef, ViewChild, ElementRef, OnInit,
-  ViewEncapsulation
+  ViewEncapsulation, EventEmitter
 } from '@angular/core';
 import {ControlValueAccessor, AbstractControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
@@ -28,7 +28,7 @@ export const CONTROL_VALUE_ACCESSOR: any = {
     'filter',
     'initialValue'
   ],
-  outputs: []
+  outputs: ['onUploaded']
 })
 export class TestbirdsImageUploadComponent implements ControlValueAccessor, OnInit {
 
@@ -62,6 +62,8 @@ export class TestbirdsImageUploadComponent implements ControlValueAccessor, OnIn
 
   private _value: any = '';
 
+  onUploaded: EventEmitter<any> = new EventEmitter<any>();
+
   ngOnInit() {
     this.uploader = new FileUploader({
       url: this.url,
@@ -73,7 +75,9 @@ export class TestbirdsImageUploadComponent implements ControlValueAccessor, OnIn
 
       if(status === 201) {
         this.image = new ImageModel(JSON.parse(response));
-        this.onChange(btoa(response));
+        let encoded: string = btoa(response);
+        this.onChange(encoded);
+        this.onUploaded.emit(encoded);
       }
 
       this.uploader.clearQueue();

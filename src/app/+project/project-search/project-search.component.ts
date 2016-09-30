@@ -49,7 +49,7 @@ export class ProjectSearchComponent extends AutocompleteComponent implements  On
   }
 
   selectOption(option: Option): boolean {
-    this.router.navigate(['/projects/:projectId/info', {'projectId': option.id}]);
+    this.router.navigate(['/project-info', option.id]);
 
     return false;
   }

@@ -7,6 +7,8 @@
                 [url]="imageUploadUrl"
                 [preview]="false"
                 [authToken]="authService.getToken()"
+                [initialValue]="translationIdentifier.screenshot"
+                (onUploaded)="saveScreenshot($event)"
         ></tb-image-upload-form>
 
     </div>

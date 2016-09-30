@@ -29,27 +29,27 @@ export const ROUTES: Routes = [
     canActivate: [CanActivateRoute]
   },
   {
-    path: 'projects/:projectId/users/management',
+    path: 'users-management/:projectId',
     component: UserManagementComponent,
     canActivate: [CanActivateRoute]
   },
   {
-    path: 'projects/:projectId/info',
+    path: 'project-info/:projectId',
     component: ProjectInfoComponent,
     canActivate: [CanActivateRoute]
   },
   {
-    path: 'projects/:projectId/translation-ids/add',
+    path: 'translation-id-add/:projectId',
     component: TranslationIdAddComponent,
     canActivate: [CanActivateRoute]
   },
   {
-    path: 'projects/:projectId/translations',
+    path: 'translations/:projectId',
     component: TranslationsComponent,
     canActivate: [CanActivateRoute]
   },
   {
-    path: 'projects/:projectId/builds',
+    path: 'project-builds/:projectId',
     component: BuildListComponent,
     canActivate: [CanActivateRoute]
   },

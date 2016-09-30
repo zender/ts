@@ -6,6 +6,7 @@ import {TranslationIdentifierModel} from '../shared/translation_identifier.model
 import {TranslationIdentifierFormModel} from '../shared/translation_identifier_form.model';
 import {TranslationDomainService} from '../../+translation-domain/shared/translation_domain.service';
 import {TranslationIdentifierService} from '../shared/translation-identifier.service';
+import {ProjectService} from '../../+project/shared/project.service';
 
 @Component({
   moduleId: module.id,
@@ -27,7 +28,7 @@ export class TranslationIdAddFormComponent implements OnInit {
   submitting: boolean = false;
 
   constructor(protected translationIdentifierService: TranslationIdentifierService, protected fb: FormBuilder,
-              protected translationDomainService: TranslationDomainService,
+              protected translationDomainService: TranslationDomainService, protected projectService: ProjectService,
               protected alertService: AlertService, protected errorHandlerService: ErrorHandlerService) {}
 
 
@@ -46,6 +47,7 @@ export class TranslationIdAddFormComponent implements OnInit {
       .subscribe(
         (data: TranslationIdentifierModel) => {
           this.onCreated.emit(data);
+          this.projectService.triggerUpdate(this.projectId);
           this.alertService.publish({
             'message': 'flash.translationIdentifier.created',
             'params': {'name': data.name}

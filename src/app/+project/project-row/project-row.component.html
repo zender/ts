@@ -6,7 +6,7 @@
     <h2>{{ project.title }}</h2>
     <ul class="control-list small">
       <li>
-        <a [routerLink]="['/projects/:mode', {projectId: project.id, mode: 'edit'}]"
+        <a [routerLink]="['/projects', 'edit', {projectId: project.id}]"
         tooltipPlacement="top"
         tooltip="Edit Project">
           <tb-icon type="edit"></tb-icon>
@@ -26,6 +26,7 @@
       </li>
     </ul>
   </div>
+
 
   <div class="actions">
     <tb-project-actions [project]="project"></tb-project-actions>

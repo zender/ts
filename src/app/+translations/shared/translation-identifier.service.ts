@@ -69,6 +69,16 @@ export class TranslationIdentifierService {
     return  Observable.fromPromise(promise);
   }
 
+  saveScrenshot(projectId: string, translationIdentifierId: string, data: string)
+    : Observable<any> {
+
+    let promise: Promise<any> = this.resource.patch(translationIdentifierId, {'screenshot': data}, {'query': {
+      'project': projectId
+    }});
+
+    return  Observable.fromPromise(promise);
+  }
+
   delete(projectId: string, translationIdentifierId: string): Observable<any> {
     let promise: Promise<any> = this.resource.remove(translationIdentifierId, {'query': {
       'project': projectId

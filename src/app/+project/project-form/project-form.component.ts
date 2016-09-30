@@ -105,7 +105,7 @@ export class ProjectFormComponent implements OnInit, OnDestroy {
           'params': {'title': this.project.title}
         });
 
-        this.router.navigate(['/projects/:projectId/info', {'projectId': project.id}]);
+        this.router.navigate(['/project-info', project.id]);
       },
       (error: any) => {
         this.submitting = false;
@@ -118,7 +118,7 @@ export class ProjectFormComponent implements OnInit, OnDestroy {
     this.projectService.update(this.project.id, this.projectFormModel).subscribe(
       (project: ProjectModel) => {
         this.alertService.publish({'message': 'flash.project.updated.success', 'params': {'title': this.project.title}});
-        this.router.navigate(['/projects/:projectId/info', {'projectId': this.project.id}]);
+        this.router.navigate(['/project-info', this.project.id]);
       },
       (error: any) => {
         this.submitting = false;

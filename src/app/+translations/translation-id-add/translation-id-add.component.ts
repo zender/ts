@@ -6,6 +6,7 @@ import {TranslationIdentifierModel} from '../shared/translation_identifier.model
 import {TranslationIdentifierService, TranslationCriteria} from '../shared/translation-identifier.service';
 import {TranslationDomainService} from '../../+translation-domain/shared/translation_domain.service';
 import {Collection} from '../../shared/testbirds/shared/collection';
+import {ProjectService} from '../../+project/shared/project.service';
 
 @Component({
   moduleId: module.id,
@@ -32,7 +33,7 @@ export class TranslationIdAddComponent implements OnInit {
   loading: boolean = false;
 
   constructor(protected route: ActivatedRoute, protected translationIdentifierService: TranslationIdentifierService,
-              protected translationDomainService: TranslationDomainService,
+              protected translationDomainService: TranslationDomainService, protected projectService: ProjectService,
               protected alertService: AlertService, protected errorHandlerService: ErrorHandlerService) {}
 
   ngOnInit() {
@@ -59,6 +60,7 @@ export class TranslationIdAddComponent implements OnInit {
         () => {
           this.selectedRow = null;
           this.isTabsetVisible = false;
+          this.projectService.triggerUpdate(this.projectId);
           this.alertService.publish({
             'message': 'flash.translationIdentifier.updated',
             'params': {'name': row.name}
@@ -78,6 +80,7 @@ export class TranslationIdAddComponent implements OnInit {
         () => {
           this.selectedRow = null;
           this.isTabsetVisible = false;
+          this.projectService.triggerUpdate(this.projectId);
           this.alertService.publish({
             'message': 'flash.translationIdentifier.deleted',
             'params': {'name': row.name}
