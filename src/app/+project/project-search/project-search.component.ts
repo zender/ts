@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {CORE_DIRECTIVES} from '@angular/common';
 import {Router, ActivatedRoute} from '@angular/router';
 import {AutocompleteAwareInterface} from '../../shared/testbirds/tb-form/autocomplete/autocomplete_aware.interface';
 import {AutocompleteComponent} from '../../shared/testbirds/tb-form/autocomplete/autocomplete.component';
@@ -7,12 +6,10 @@ import {Observable} from 'rxjs/Rx';
 import {Option} from '../../shared/testbirds/shared/option.model';
 import {ProjectService} from '../shared/project.service';
 
-
 @Component({
   moduleId: module.id,
   selector: 'tb-project-search',
   templateUrl: 'project-search.component.html',
-  directives: [CORE_DIRECTIVES],
   inputs: [
     'service',
     'ngFormControl',

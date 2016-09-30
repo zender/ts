@@ -51,7 +51,6 @@ export class TestbirdsPanelWrapperComponent implements OnInit {
 @Component({
   moduleId: module.id,
   selector: 'tb-panel-header',
-  directives: [],
   template: `
   <div class="tb-panel-head">
     <ng-content></ng-content>

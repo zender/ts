@@ -1,5 +1,4 @@
-import {Component, Input} from '@angular/core';
-import {CORE_DIRECTIVES} from '@angular/common';
+import {Component} from '@angular/core';
 import {TranslationDomainAutocompleteComponent} from '../translation-domain-autocomplete/translation-domain-autocomplete.component';
 import {Option} from '../../shared/testbirds/shared/option.model';
 
@@ -8,7 +7,6 @@ import {Option} from '../../shared/testbirds/shared/option.model';
   selector: 'tb-translation-domain-form',
   templateUrl: 'translation-domain-form.component.html',
   providers: [],
-  directives: [CORE_DIRECTIVES],
   inputs: ['autocompleteWidget'],
   outputs: [],
 })

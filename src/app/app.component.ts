@@ -1,27 +1,21 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 import {Parameters} from '../parameters';
 import {LanguageService} from "./+language/shared/language.service";
 import {ProjectService} from './+project/shared/project.service';
 import {AdapterService} from './+adapter/shared/adapter.service';
-import {ErrorHandlerService} from './shared/testbirds/shared/error_handler.service';
-import {TestbirdsAlertComponent} from './shared/testbirds/tb/alert/alert.component';
-import {AlertService} from './shared/testbirds/tb/alert/alert.service';
 import {UserModel} from './+user/shared/user.model';
 import {AuthService} from './shared/testbirds/security/auth.service';
-import {ToolbarComponent} from './+layout/toolbar/toolbar.component';
-import {NavbarComponent} from './+layout/navbar/navbar.component';
+import {Router} from '@angular/router';
 
 @Component({
   moduleId: module.id,
   selector: 'app',
   providers: [LanguageService, AdapterService],
-  viewProviders: [ProjectService, ErrorHandlerService, AlertService],
+  viewProviders: [ProjectService],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  directives: [NavbarComponent, ToolbarComponent, ROUTER_DIRECTIVES, TestbirdsAlertComponent]
 })
 
 export class AppComponent implements OnInit {

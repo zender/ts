@@ -1,8 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {Option} from '../../shared/testbirds/shared/option.model';
 import {AutocompleteMultiComponent} from '../../shared/testbirds/tb-form/autocomplete/autocomplete-multi.component';
-import {CORE_DIRECTIVES, AbstractControl} from '@angular/common';
-import {REACTIVE_FORM_DIRECTIVES, ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl} from '@angular/forms';
 import {ProjectUserPermissionModel} from '../shared/project_user_permission.model';
 
 export const CONTROL_VALUE_ACCESSOR: any = {
@@ -16,14 +15,13 @@ export const CONTROL_VALUE_ACCESSOR: any = {
   selector: 'tb-user-form',
   templateUrl: 'user-form.component.html',
   providers: [CONTROL_VALUE_ACCESSOR],
-  directives: [CORE_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
   inputs: ['autocompleteWidget', 'ngFormControl'],
 })
 export class UserFormComponent implements ControlValueAccessor {
 
   autocompleteWidget: AutocompleteMultiComponent;
 
-  ngFormControl: AbstractControl;
+  ngFormControl: FormControl;
 
   value: any;
 

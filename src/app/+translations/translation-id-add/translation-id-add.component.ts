@@ -1,15 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {PAGINATION_DIRECTIVES, TAB_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {AlertService} from '../../shared/testbirds/tb/alert/alert.service';
 import {ErrorHandlerService} from '../../shared/testbirds/shared/error_handler.service';
-import {AutocompleteComponent} from '../../shared/testbirds/tb-form/autocomplete/autocomplete.component';
-import {TestbirdsInputDebounceComponent} from '../../shared/testbirds/tb-form/tb-input-debounce.component';
-import {TranslationIdAddFormComponent} from '../translation-id-add-form/translation-id-add-form.component';
 import {TranslationIdentifierModel} from '../shared/translation_identifier.model';
 import {TranslationIdentifierService, TranslationCriteria} from '../shared/translation-identifier.service';
-import {ProjectRowComponent} from '../../+project/project-row/project-row.component';
-import {TranslationDomainAddFormComponent} from '../../+translation-domain/translation-domain-add-form/translation-domain-add-form.component';
 import {TranslationDomainService} from '../../+translation-domain/shared/translation_domain.service';
 import {Collection} from '../../shared/testbirds/shared/collection';
 
@@ -17,10 +11,6 @@ import {Collection} from '../../shared/testbirds/shared/collection';
   moduleId: module.id,
   selector: 'tb-translation-id-add',
   templateUrl: 'translation-id-add.component.html',
-  directives: [
-    ProjectRowComponent, AutocompleteComponent, TranslationDomainAddFormComponent, TranslationIdAddFormComponent,
-    PAGINATION_DIRECTIVES, TAB_DIRECTIVES, TestbirdsInputDebounceComponent
-  ],
   providers: [TranslationDomainService, TranslationIdentifierService],
 })
 export class TranslationIdAddComponent implements OnInit {

@@ -1,6 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {CORE_DIRECTIVES} from '@angular/common';
-import {REACTIVE_FORM_DIRECTIVES, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {AutocompleteMultiComponent} from '../../shared/testbirds/tb-form/autocomplete/autocomplete-multi.component';
 import {LanguageService} from '../shared/language.service';
 
@@ -10,12 +9,10 @@ export const CONTROL_VALUE_ACCESSOR: any = {
   multi: true
 };
 
-
 @Component({
   moduleId: module.id,
   selector: 'tb-language-autocomplete',
   templateUrl: 'language-autocomplete.component.html',
-  directives: [CORE_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
   providers: [CONTROL_VALUE_ACCESSOR],
   inputs: [
     'service',

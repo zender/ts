@@ -1,7 +1,5 @@
 import {Component, EventEmitter} from '@angular/core';
-import {REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 import {TranslationService} from '../shared/translation.service';
-import {TestbirdsTextareaComponent} from '../../shared/testbirds/tb-form/tb-form-textarea.component';
 import {ErrorHandlerService} from '../../shared/testbirds/shared/error_handler.service';
 import {TranslationModel} from '../shared/translation.model';
 import {ProjectService} from '../../+project/shared/project.service';
@@ -10,7 +8,6 @@ import {ProjectService} from '../../+project/shared/project.service';
   moduleId: module.id,
   selector: 'tb-translation-content',
   templateUrl: 'translation-content.component.html',
-  directives: [TestbirdsTextareaComponent, REACTIVE_FORM_DIRECTIVES],
   inputs: ['projectId', 'translationIdentifierId', 'translation'],
   outputs: ['onUpdate'],
 })

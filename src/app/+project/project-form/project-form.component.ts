@@ -1,44 +1,25 @@
-import {Component, OnInit, OnDestroy, ViewChild, ElementRef} from '@angular/core';
-import {CORE_DIRECTIVES, FormBuilder, ControlGroup, Validators} from '@angular/common';
-import {REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
-import {Router, ActivatedRoute, ROUTER_DIRECTIVES} from '@angular/router';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {Router, ActivatedRoute} from '@angular/router';
 import {ProjectService} from '../shared/project.service';
 import {ProjectFormModel} from '../shared/project_form.model';
-import {TAB_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {TestbirdsTextComponent} from '../../shared/testbirds/tb-form/tb-form-text.component';
-import {TestbirdsSelectComponent} from '../../shared/testbirds/tb-form/tb-form-select.component';
 import {Subscription} from 'rxjs/Rx';
 import {ProjectModel} from '../shared/project.model';
 import {Option} from '../../shared/testbirds/shared/option.model';
 import {ErrorHandlerService} from '../../shared/testbirds/shared/error_handler.service';
 import {AlertService} from '../../shared/testbirds/tb/alert/alert.service';
-import {AutocompleteMultiComponent} from '../../shared/testbirds/tb-form/autocomplete/autocomplete-multi.component';
-import {TranslationDomainFormComponent} from '../../+translation-domain/translation-domain-form/translation-domain-form.component';
-import {UserFormComponent} from '../../+user/user-form/user-form.component';
-import {UserAutocompleteComponent} from '../../+user/user-autocomplete/user-autocomplete.component';
-import {TranslationDomainAutocompleteComponent} from '../../+translation-domain/translation-domain-autocomplete/translation-domain-autocomplete.component';
-import {LanguageAutocompleteComponent} from '../../+language/language-autocomplete/language-autocomplete.component';
-import {LanguageFormComponent} from '../../+language/language-form/language-form.component';
 import {AdapterService} from '../../+adapter/shared/adapter.service';
 import {Parameters} from '../../../parameters';
-import {TestbirdsImageUploadComponent} from '../../shared/testbirds/tb-form/image-upload/tb-image-upload.component';
 import {AuthService} from '../../shared/testbirds/security/auth.service';
 
 @Component({
   moduleId: module.id,
   selector: 'tb-project-form',
   templateUrl: 'project-form.component.html',
-  directives: [
-    CORE_DIRECTIVES, REACTIVE_FORM_DIRECTIVES, TAB_DIRECTIVES, TestbirdsTextComponent, AutocompleteMultiComponent,
-    LanguageFormComponent, LanguageAutocompleteComponent, TranslationDomainFormComponent, ROUTER_DIRECTIVES,
-    TranslationDomainAutocompleteComponent, UserAutocompleteComponent, UserFormComponent, TestbirdsSelectComponent,
-    TestbirdsImageUploadComponent
-  ],
-  providers: []
 })
 export class ProjectFormComponent implements OnInit, OnDestroy {
 
-  projectForm: ControlGroup;
+  projectForm: FormGroup;
 
   projectFormModel: ProjectFormModel = new ProjectFormModel();
 

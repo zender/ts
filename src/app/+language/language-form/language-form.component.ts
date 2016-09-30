@@ -1,9 +1,7 @@
 import {Component, forwardRef} from '@angular/core';
 import {Option} from '../../shared/testbirds/shared/option.model';
 import {AutocompleteMultiComponent} from '../../shared/testbirds/tb-form/autocomplete/autocomplete-multi.component';
-import {BUTTON_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-import {CORE_DIRECTIVES, AbstractControl} from '@angular/common';
-import {REACTIVE_FORM_DIRECTIVES, ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR, AbstractControl} from '@angular/forms';
 
 export const CONTROL_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -15,8 +13,7 @@ export const CONTROL_VALUE_ACCESSOR: any = {
   moduleId: module.id,
   selector: 'tb-language-form',
   templateUrl: 'language-form.component.html',
-  providers: [LANGUAGE_CONTROL_VALUE_ACCESSOR],
-  directives: [BUTTON_DIRECTIVES, CORE_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
+  providers: [CONTROL_VALUE_ACCESSOR],
   inputs: ['autocompleteWidget', 'ngFormControl', 'isCreateMode']
 })
 export class LanguageFormComponent implements ControlValueAccessor {

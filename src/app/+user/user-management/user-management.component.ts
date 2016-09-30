@@ -1,15 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {TranslatePipe} from 'ng2-translate/ng2-translate';
-import {
-  ProjectUserPermissionService,
-} from '../shared/project_user_permission.service';
+import {ProjectUserPermissionService,} from '../shared/project_user_permission.service';
 import {ProjectUserPermissionModel} from '../shared/project_user_permission.model';
 import {ActivatedRoute} from '@angular/router';
-import {TestbirdsInputDebounceComponent} from '../../shared/testbirds/tb-form/tb-input-debounce.component';
-import {TestbirdsSelectComponent} from '../../shared/testbirds/tb-form/tb-form-select.component';
 import {ErrorHandlerService} from '../../shared/testbirds/shared/error_handler.service';
 import {Option} from '../../shared/testbirds/shared/option.model';
-import {ProjectRowComponent} from '../../+project/project-row/project-row.component';
 const _ = require('lodash');
 
 @Component({
@@ -17,8 +11,6 @@ const _ = require('lodash');
   selector: 'tb-user-management',
   templateUrl: 'user-management.component.html',
   providers: [ProjectUserPermissionService],
-  directives: [ProjectRowComponent, TestbirdsInputDebounceComponent, TestbirdsSelectComponent],
-  pipes: [TranslatePipe]
 })
 export class UserManagementComponent implements OnInit {
 

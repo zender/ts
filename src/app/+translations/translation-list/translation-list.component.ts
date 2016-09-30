@@ -1,14 +1,10 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Option} from '../../shared/testbirds/shared/option.model';
-import {TestbirdsDropdownComponent} from '../../shared/testbirds/tb/dropdown/tb-dropdown.component';
 import {Subscription} from 'rxjs/Rx';
-import {TestbirdsInputDebounceComponent} from '../../shared/testbirds/tb-form/tb-input-debounce.component';
 import {LanguageModel} from '../../+language/shared/language.model';
-import {TranslationRowComponent} from '../translation-row/translation-row.component';
 import {TranslationIdentifierModel} from '../shared/translation_identifier.model';
 import {TranslationIdentifierService, TranslationCriteria} from '../shared/translation-identifier.service';
 import {ProjectModel} from '../../+project/shared/project.model';
-import {LanguageDropdownComponent} from '../../+language/language-dropdown/language-dropdown.component';
 import {LanguageService} from '../../+language/shared/language.service';
 import {ProjectService} from '../../+project/shared/project.service';
 import {Collection} from '../../shared/testbirds/shared/collection';
@@ -17,7 +13,6 @@ import {Collection} from '../../shared/testbirds/shared/collection';
   moduleId: module.id,
   selector: 'tb-translation-list',
   templateUrl: 'translation-list.component.html',
-  directives: [TranslationRowComponent, TestbirdsDropdownComponent, TestbirdsInputDebounceComponent, LanguageDropdownComponent],
   inputs: ['projectId'],
   outputs: [],
 })
@@ -115,7 +110,7 @@ export class TranslationListComponent implements OnInit, OnDestroy {
     });
 
     this.translationIdentifierService.find(this.projectId, page, criteria)
-      .subscribe((collection: Collection<TranslationIdentifierModel>) => { console.log(collection);
+      .subscribe((collection: Collection<TranslationIdentifierModel>) => {
         this.nextPage = collection.next;
         this.previousPage = collection.previous;
         this.currentPage = collection.current;

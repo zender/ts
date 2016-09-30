@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {UserModel} from '../../+user/shared/user.model';
 
 @Component({
@@ -9,7 +9,6 @@ import {UserModel} from '../../+user/shared/user.model';
     <a *ngIf="showDashboardLink()" [routerLink]="['/dashboard']" >{{ 'link.go_to_dashboard' }}</a>
   `,
   styleUrls: ['navbar.component.scss'],
-  directives: [ROUTER_DIRECTIVES],
   inputs: ['user'],
 })
 export class NavbarComponent {

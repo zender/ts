@@ -1,12 +1,9 @@
 import {Component} from '@angular/core';
-import {CORE_DIRECTIVES} from '@angular/common';
-import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {TestbirdsDropdownComponent} from '../../shared/testbirds/tb/dropdown/tb-dropdown.component';
 
 @Component({
   moduleId: module.id,
   selector: 'language-dropdown',
-  directives: [DROPDOWN_DIRECTIVES, CORE_DIRECTIVES],
   inputs: [
     'btnClass',
     'label',

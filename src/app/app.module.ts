@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { TabsModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { Ng2BootstrapModule } from 'ng2-bootstrap/ng2-bootstrap';
 import {FileUploadModule} from 'ng2-file-upload';
@@ -55,6 +56,30 @@ import {NotificationListComponent} from './+notification/notification-list.compo
 import {ProjectListComponent} from './+project/project-list/project-list.component';
 import {DatePipe} from '@angular/common';
 import {ProjectSearchComponent} from './+project/project-search/project-search.component';
+import {NavbarComponent} from './+layout/navbar/navbar.component';
+import {ToolbarComponent} from './+layout/toolbar/toolbar.component';
+import {AlertService} from './shared/testbirds/tb/alert/alert.service';
+import {
+  TestbirdsPanelWrapperComponent,
+  TestbirdsPanelHeaderComponent
+} from './shared/testbirds/tb-panel/tb-panel.component';
+import {TestbirdsSelectComponent} from './shared/testbirds/tb-form/tb-form-select.component';
+import {AutocompleteComponent} from './shared/testbirds/tb-form/autocomplete/autocomplete.component';
+import {AutocompleteMultiComponent} from './shared/testbirds/tb-form/autocomplete/autocomplete-multi.component';
+import {LanguageFormComponent} from './+language/language-form/language-form.component';
+import {TranslationDomainFormComponent} from './+translation-domain/translation-domain-form/translation-domain-form.component';
+import {UserFormComponent} from './+user/user-form/user-form.component';
+import {LanguageAutocompleteComponent} from './+language/language-autocomplete/language-autocomplete.component';
+import {TranslationDomainAutocompleteComponent} from './+translation-domain/translation-domain-autocomplete/translation-domain-autocomplete.component';
+import {UserAutocompleteComponent} from './+user/user-autocomplete/user-autocomplete.component';
+import {TranslationIdAddFormComponent} from './+translations/translation-id-add-form/translation-id-add-form.component';
+import {TranslationDomainAddFormComponent} from './+translation-domain/translation-domain-add-form/translation-domain-add-form.component';
+import {TranslationListComponent} from './+translations/translation-list/translation-list.component';
+import {TestbirdsDropdownComponent} from './shared/testbirds/tb/dropdown/tb-dropdown.component';
+import {LanguageDropdownComponent} from './+language/language-dropdown/language-dropdown.component';
+import {TranslationRowComponent} from './+translations/translation-row/translation-row.component';
+import {TranslationContentComponent} from './+translations/translation-content/translation-content.component';
+import {TestbirdsTextareaComponent} from './shared/testbirds/tb-form/tb-form-textarea.component';
 
 
 // Application wide providers
@@ -66,10 +91,7 @@ const APP_PROVIDERS = [
   CookieService,
   UserService,
   ErrorHandlerService,
-  TranslatePipe,
-  TestbirdsColorboxDirective,
-  TestbirdsImageFilterPipe,
-  DatePipe
+  AlertService
 ];
 
 
@@ -104,20 +126,44 @@ const APP_PROVIDERS = [
     TestbirdsAlertComponent,
     TestbirdsImageUploadComponent,
     NotificationListComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    NavbarComponent,
+    ToolbarComponent,
+    TestbirdsPanelWrapperComponent,
+    TestbirdsPanelHeaderComponent,
+    TestbirdsSelectComponent,
+    AutocompleteComponent,
+    AutocompleteMultiComponent,
+    LanguageFormComponent,
+    TranslationDomainFormComponent,
+    UserFormComponent,
+    LanguageAutocompleteComponent,
+    TranslationDomainAutocompleteComponent,
+    UserAutocompleteComponent,
+    TranslationIdAddFormComponent,
+    TranslationDomainAddFormComponent,
+    TranslationListComponent,
+    TestbirdsColorboxDirective,
+    TestbirdsImageFilterPipe,
+    TestbirdsDropdownComponent,
+    LanguageDropdownComponent,
+    TranslationRowComponent,
+    TranslationContentComponent,
+    TestbirdsTextareaComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: false }),
+    RouterModule.forRoot(ROUTES, { useHash: true }),
     TranslateModule.forRoot(),
     ButtonsModule,
     TooltipModule,
     DropdownModule,
     FileUploadModule,
-    PaginationModule
+    PaginationModule,
+    TabsModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

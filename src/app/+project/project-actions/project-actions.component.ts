@@ -22,27 +22,27 @@ export class ProjectActionsComponent implements OnInit {
       {
         'label': 'user.management',
         'icon': 'users',
-        'instructions': ['/projects/:projectId/users/management', {projectId: this.project.id}],
+        'instructions': ['./projects/:projectId/users/management', {projectId: this.project.id}],
       },
       {
         'label': 'project.translation_id.add',
         'icon': 'translation-id',
-        'instructions': ['/projects/:projectId/translation-ids/add', {projectId: this.project.id}],
+        'instructions': ['./projects/:projectId/translation-ids/add', {projectId: this.project.id}],
       },
       {
         'label': 'project.translations',
         'icon': 'tests',
-        'instructions': ['/projects/:projectId/translations', {projectId: this.project.id}],
+        'instructions': ['./projects/:projectId/translations', {projectId: this.project.id}],
       },
       {
         'label': 'project.info',
         'icon': 'info',
-        'instructions': ['/projects/:projectId/info', {projectId: this.project.id}],
+        'instructions': ['./projects/:projectId/info', {projectId: this.project.id}],
       },
       {
         'label': 'project.builds',
         'icon': 'actions',
-        'instructions': ['/projects/:projectId/builds', {projectId: this.project.id}],
+        'instructions': ['./projects/:projectId/builds', {projectId: this.project.id}],
       },
     ];
   }
